@@ -8,7 +8,7 @@
   </head>
   <body>
     <h1>Signup</h1>
-    <form action="registration.php" method="post">
+    <form action="3u_signup.php.php" method="post">
       <div>
         <label for="uname">Username : </label>
         <input type="text" id="uname" name="uname" required>
@@ -28,6 +28,10 @@
       <div>
         <label for="uphone">Phone Number: </label>
         <input type="text" id="uphone" name="uphone" required>
+      </div>
+      <div>
+        <label for="address">Address: </label>
+        <input type="text" id="ad" name="address" required>
       </div>
       <input type="submit" name="sub" value="SIGN UP" />
       <a href="3u_login.php"><input name= "backtologin" value="Back To Login" type="button"></a>
@@ -71,6 +75,7 @@
     $unname = $_POST['uname'];
     $unemail = $_POST['umail'];
     $unphone = $_POST['uphone'];
+    $unadd= $_POST['address'];
     $password_hash = password_hash($_POST['upass'], PASSWORD_DEFAULT);
   
     $query="INSERT INTO user_table(username,email,password,phonenumber) values ('$unname','$unemail','$password_hash','$unphone')";

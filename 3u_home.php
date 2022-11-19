@@ -1,5 +1,5 @@
 <?php 
-    session_start();
+    //session_start();
     require 'dbconfig/config.php'
 ?>
 <html>
@@ -7,7 +7,13 @@
       <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/water.css@2/out/dark.css">
     </head>
     <body>
+        <form action="3u_home.php" method="post">
        <div> 
+       <h1>
+            Hi
+            <?php echo $_SESSION['name']
+            ?>  
+        </h1>
         <input type="text" name="location">
         <input name="findfood" type="Submit" value="FIND FOOD">
        </div>
@@ -16,6 +22,16 @@
        <div>
           <input name="checkSchedule" type="Submit" value="CHECK SCHEDULES">
        </div>
+       </form>
+       <h1>The hotels in the given location</h1>
+       <table>
+            <tr>
+                <th>Hotel id</th>
+                <th>Hotel name</th>
+                <th>Hotel ratings</th>
+                <th>Details</th>
+            </tr>
+       </table>
     </body>
 </html>
 <?php
@@ -29,8 +45,20 @@
         $check=$_POST['pass'];
         $check_pass= password_verify( $check, $query);
 
-    
-        if(mysqli_num_rows($query_run)>0)
+        while($row=mysqli_fetch_array($query_run))
+        {
+            ?>
+             <tr>
+                <td> <?php echo $row['hotel_name']?></td>
+                <td> <?php echo $row['hotel_ratings']?></td>
+                <td> <input type="Submit" name="hotsub" value="View dishes" /> </td>
+             </tr>
+
+
+             <?php
+        }
+
+        /*if(mysqli_num_rows($query_run)>0)
         {
             
             $_SESSION['location']=$loc;
@@ -41,6 +69,6 @@
         {
             echo '<script type="text/javascript"> alert("Invalid Credentials")
              </script>';
-        }
+        }*/
     }
 ?>
