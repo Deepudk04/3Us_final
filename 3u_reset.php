@@ -28,7 +28,7 @@
    $query_run = mysqli_query($con,$query);
    if(mysqli_num_rows($query_run)>0) {
     $_SESSION['umail']=$uname;
-    header('location:pass.php');
+    header('location:3u_pass.php');
    }
    else{
     die("Enter valid Email id");

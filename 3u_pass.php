@@ -21,7 +21,7 @@ require 'dbconfig/config.php'
 			<input type="password" name="cpass" id="cpass">
 		</div>
 		<input type="submit" name="sub" value="CHANGE PASSWORD" />
-        <a href="site.php"><input type="button" value="GO BACK TO LOGIN"/></a>
+        <a href="3u_login.php"><input type="button" value="GO BACK TO LOGIN"/></a>
 	</form>
 </body>
 </html>
@@ -45,7 +45,7 @@ require 'dbconfig/config.php'
   }
   $password_hash = password_hash($_POST['upass'], PASSWORD_DEFAULT);
   $sess=$_SESSION['umail'];
-  $query="UPDATE user set password = '$password_hash' where email ='$sess'";
+  $query="UPDATE user_table set password = '$password_hash' where email ='$sess'";
   $query_run=mysqli_query($con,$query);
   echo '<script type="text/javascript"> alert("Password changed successfully!!!") </script>';
 
